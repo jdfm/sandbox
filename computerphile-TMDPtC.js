@@ -1,8 +1,8 @@
 /**
- * Ackerman {
+ * Ackermann {
  *   storage: {Array of Arrays of Numbers},
  *   loopy: {Function},
- *   recursive: {Function Ackerman}
+ *   recursive: {Function Ackermann}
  * } 
  *
  * After watching the episode of computerphile (https://www.youtube.com/watch?v=i7sm9dzFtEI)
