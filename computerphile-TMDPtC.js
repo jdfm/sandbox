@@ -29,9 +29,9 @@ var Ackermann = (function(){
         n > NEGATIVE_INFINITY && // n larger than negative infinity? Rules out NaN and negative infinity.
         n < POSITIVE_INFINITY &&  // n smaller than positive infinity? Rules out NaN and positive infinity.
         n >= 0 && // we want only positive integers
-        !(n % 1); // n has a remainder of 0 when calculating modulo 1? Rules out floating points.
+        !( n % 1 ); // n has a remainder of 0 when calculating modulo 1? Rules out floating points.
     };
-  }(-1/0, 1/0)); // just making sure we're getting negative and positive infinity
+  }( -1/0, 1/0 )); // just making sure we're getting negative and positive infinity
 
   return {
     storage: [],
