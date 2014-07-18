@@ -14,6 +14,8 @@
  * Basically the idea was to recreate how functions create call stacks, mix that with 
  *   some local storage to quickly get to answers we've already calculated before, and 
  *   boom, we have a non recursive Ackermann function, I call it loopy for short.
+ *   loopy uses one while loop with various if blocks to calculate the answer, it 
+ *   never calls itself ever.
  *
  * The stack code isn't very pretty, I could have probably created a class with peek, 
  *   push and pop and whatnot that would make the code nicer to look at, but it works.
@@ -116,24 +118,11 @@ var Ackermann = (function(){
 }());
 
 // A couple of tests to make sure it's returning the expected results
-console.log(Ackermann.loopy(0,0), Ackermann.loopy(0,0) === Ackermann.recursive(0,0));
-console.log(Ackermann.loopy(0,1), Ackermann.loopy(0,1) === Ackermann.recursive(0,1));
-console.log(Ackermann.loopy(0,2), Ackermann.loopy(0,2) === Ackermann.recursive(0,2));
-console.log(Ackermann.loopy(0,3), Ackermann.loopy(0,3) === Ackermann.recursive(0,3));
-console.log(Ackermann.loopy(0,4), Ackermann.loopy(0,4) === Ackermann.recursive(0,4));
-console.log(Ackermann.loopy(0,5), Ackermann.loopy(0,5) === Ackermann.recursive(0,5));
-console.log(Ackermann.loopy(1,0), Ackermann.loopy(1,0) === Ackermann.recursive(1,0));
-console.log(Ackermann.loopy(1,1), Ackermann.loopy(1,1) === Ackermann.recursive(1,1));
-console.log(Ackermann.loopy(1,2), Ackermann.loopy(1,2) === Ackermann.recursive(1,2));
-console.log(Ackermann.loopy(1,3), Ackermann.loopy(1,3) === Ackermann.recursive(1,3));
-console.log(Ackermann.loopy(1,4), Ackermann.loopy(1,4) === Ackermann.recursive(1,4));
-console.log(Ackermann.loopy(1,5), Ackermann.loopy(1,5) === Ackermann.recursive(1,5));
-console.log(Ackermann.loopy(2,0), Ackermann.loopy(2,0) === Ackermann.recursive(2,0));
-console.log(Ackermann.loopy(2,1), Ackermann.loopy(2,1) === Ackermann.recursive(2,1));
-console.log(Ackermann.loopy(2,2), Ackermann.loopy(2,2) === Ackermann.recursive(2,2));
-console.log(Ackermann.loopy(2,3), Ackermann.loopy(2,3) === Ackermann.recursive(2,3));
-console.log(Ackermann.loopy(2,4), Ackermann.loopy(2,4) === Ackermann.recursive(2,4));
-console.log(Ackermann.loopy(2,5), Ackermann.loopy(2,5) === Ackermann.recursive(2,5));
+for(var i = 0, iLen = 3; i < iLen; i++){
+  for(var j = 0, jLen = 6; j < jLen; j++){
+    console.log(Ackermann.loopy(i,j), Ackermann.loopy(i,j) === Ackermann.recursive(i,j));
+  }
+}
 
 // don't go beyond 4,1, therein lies pain...
 // console.log(Ackermann.recursive(4, 1)); --> call stack exceeded
