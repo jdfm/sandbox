@@ -43,7 +43,7 @@ var Ackermann = (function(){
       for(var i = m; i >= 0 && !this.storage[ i ]; ){ this.storage[ i-- ] = [] }
 
       var mnStack = [ m, n ], 
-          sLen = 2, cM, cN, stopUnrolling = false;
+          sLen = 2, cM, cN;
 
       while( sLen > 1 ){
         // roll back some more of that stack
