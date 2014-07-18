@@ -68,6 +68,7 @@ var Ackermann = (function(){
           continue;
         }
 
+        // start using the last available arguments from the stack
         if( typeof mnStack[ sLen - 1 ] === 'number' ){
           cM = mnStack[ sLen - 2 ]; 
           cN = mnStack[ sLen - 1 ];
@@ -76,13 +77,13 @@ var Ackermann = (function(){
           cN = mnStack[ sLen - 1 ][ 1 ];
         }
 
-        // roll back some stack
+        // can we roll back some stack?
         if( !cM || typeof this.storage[ cM ][ cN ] !== 'undefined' ){
           if( typeof mnStack.pop() === 'number' ){
             mnStack.pop();
           }
 
-          if(!this.storage[ cM ][ cN ]){
+          if( !this.storage[ cM ][ cN ] ){
             this.storage[ cM ][ cN ] = cN + 1;
           }
 
@@ -91,9 +92,11 @@ var Ackermann = (function(){
           continue;
         }
 
+        // we need to make the stack grow again
         sLen = mnStack.push( cM - 1, !cN ? 1 : [ cM, cN - 1 ] );
       }
 
+      // return the final answer
       return ( this.storage[ m ][ n ] || ( this.storage[ m ][ n ] = mnStack[ 0 ] ) );
     },
 
