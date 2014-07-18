@@ -40,15 +40,16 @@ var Ackermann = (function(){
       if( !isNaturalNumber( m ) || !isNaturalNumber( n ) ){ return 0; }
 
       // we only need storage up to m
-      for(var i = m; i >= 0 && !this.storage[ i ]; ){ this.storage[ i-- ] = [] }
+      for( var i = m; i >= 0 && !this.storage[ i ]; ){ this.storage[ i-- ] = []; }
 
       var mnStack = [ m, n ], 
           sLen = 2, cM, cN;
 
       while( sLen > 1 ){
-        // roll back some more of that stack
-        if( sLen % 2 ){ // our stack should have an even number of elements
-          if(typeof mnStack[ sLen - 2 ] !== 'number'){
+        // do we have an odd number of elements in our stack? if so we 
+        //    should start rolling back the stack
+        if( sLen % 2 ){
+          if( typeof mnStack[ sLen - 2 ] !== 'number' ){
             cM = mnStack[ sLen - 2 ][ 0 ];
             cN = mnStack[ sLen - 2 ][ 1 ];
 
